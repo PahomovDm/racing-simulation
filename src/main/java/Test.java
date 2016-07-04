@@ -6,32 +6,43 @@ public class Test {
 
 	public static void main(String[] args) {
 		
-		System.out.println("Please enter your name:");
-		
+		up();
+		entry();
 		trimLine();
-		
-		System.out.printf("Hello %s! This is Racing Simulator\n", name);
-		System.out.print("Press <Enter> to exit...");
-		
+		helloName();
 		equalsEnter();
 	}
 	
-	static String trimLine ()
-	{
-		do {
-			 name = scan.nextLine();
-		} while (name.trim().equals(""));
+	private static void up() {
+		System.out.println("Program rasing-simulation\n");
+	}
+
+	private static void entry() {	
+ 		System.out.println("Please enter your name:");
+		name = scan.nextLine();
+	}
+	
+	private static String trimLine () {
+		if (name == null) 
+			 System.out.println("Null");
 		
-		return name.trim();
+		while (name.trim().equals("")) {
+			System.out.println("Empty");
+						
+			entry();
+		} 
+		
+		return name;
 	}
-
-	static void equalsEnter ()
-	{
-		while (("\n").equals(scan.nextLine())) {
-		;
-		}
+	
+	private static void helloName () {
+ 		System.out.printf("Hello %s! This is Racing Simulator\n", name);
+	}
+	
+	private static void equalsEnter () {
+		System.out.print("Press <Enter> to exit...");
+		while (("\n").equals(scan.nextLine()));
 
 	}
-
-
+	
 }
