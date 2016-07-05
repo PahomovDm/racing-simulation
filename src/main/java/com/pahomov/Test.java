@@ -1,32 +1,27 @@
 package com.pahomov;
+
 import java.util.Scanner;
 
-public final class Test {
+public class Test {
 
-    private static Scanner scan = new Scanner(System.in);
-    private static String name;
-
-    private Test() {
-    }
+    private Scanner scan = new Scanner(System.in);
+    private String name;
 
     public static void main(String[] args) {
-        getInfo();
-        setName();
-        trimLine();
-        helloName();
-        equalsEnter();
+        Test myTest = new Test();
+        myTest.run();
     }
 
-    private static void getInfo() {
+    private void getInfo() {
         System.out.println("Program rasing-simulation\n");
     }
 
-    private static void setName() {
+    private void setName() {
         System.out.println("Please enter your name:");
         name = scan.nextLine();
     }
 
-    private static String trimLine() {
+    private String trimLine() {
         if (name == null) {
             System.out.println("Null");
         }
@@ -37,13 +32,21 @@ public final class Test {
         return name;
     }
 
-    private static void helloName() {
+    private void helloName() {
         System.out.printf("Hello %s! This is Racing Simulator\n", name.trim());
     }
 
-    private static void equalsEnter() {
+    private void equalsEnter() {
         while (("\n").equals(scan.nextLine())) {
             System.out.print("Press <Enter> to exit...");
         }
+    }
+
+    private void run() {
+        getInfo();
+        setName();
+        trimLine();
+        helloName();
+        equalsEnter();
     }
 }
