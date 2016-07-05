@@ -1,4 +1,6 @@
+package com.pahomov;
 import java.util.Scanner;
+
 public final class Test {
 
     private static Scanner scan = new Scanner(System.in);
@@ -9,7 +11,7 @@ public final class Test {
 
     public static void main(String[] args) {
         getInfo();
-        enterName();
+        setName();
         trimLine();
         helloName();
         equalsEnter();
@@ -19,7 +21,7 @@ public final class Test {
         System.out.println("Program rasing-simulation\n");
     }
 
-    private static void enterName() {
+    private static void setName() {
         System.out.println("Please enter your name:");
         name = scan.nextLine();
     }
@@ -30,7 +32,7 @@ public final class Test {
         }
         while (name.trim().equals("")) {
             System.out.println("Empty");
-            enterName();
+            setName();
         }
         return name;
     }
