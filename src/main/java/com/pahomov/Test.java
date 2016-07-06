@@ -2,8 +2,13 @@ package com.pahomov;
 
 import java.util.Scanner;
 
-public class Test {
+import org.apache.log4j.Logger;
 
+
+
+public class Test {
+    
+    public static final Logger LOG=Logger.getLogger(Test.class);
     private Scanner scan = new Scanner(System.in);
     private String name;
 
