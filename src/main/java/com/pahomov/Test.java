@@ -32,7 +32,7 @@ public class Test {
         } while (!(checkRegExp(name)));
     }
 
-    private void trimLine() {
+    private void inspectionNull() {
         if (name == null) {
             throw new NullPointerException("Name is null");
         }
@@ -57,8 +57,13 @@ public class Test {
     private void run() {
         LOG.info("Start");
         getInfo();
-        readName();
-        trimLine();
+        try {
+            readName();
+        } catch (NullPointerException e) {
+            System.exit(1);
+            LOG.error("NullPointerException");
+            }
+        inspectionNull();
         helloName();
         equalsEnter();
         LOG.info("End");
