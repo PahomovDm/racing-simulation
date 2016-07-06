@@ -2,13 +2,14 @@ package com.pahomov;
 
 import java.util.Scanner;
 
+import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 
 
 public class Test {
-    
-    public static final Logger LOG=Logger.getLogger(Test.class);
+
+    public static final Logger LOG = Logger.getLogger(Test.class);
     private Scanner scan = new Scanner(System.in);
     private String name;
 
@@ -48,10 +49,13 @@ public class Test {
     }
 
     private void run() {
+        BasicConfigurator.configure();
+        LOG.info("Start");
         getInfo();
         setName();
         trimLine();
         helloName();
         equalsEnter();
+        LOG.info("Finish");
     }
 }
