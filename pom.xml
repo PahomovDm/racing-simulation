@@ -59,7 +59,7 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>MAIN_CLASS</mainClass>
+							<mainClass>com.pahomov.Test</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
