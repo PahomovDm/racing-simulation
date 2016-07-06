@@ -1,12 +1,15 @@
 package com.pahomov;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
-
-
+/**
+ * @author dpahomov
+ *
+ */
 public class Test {
 
     public static final Logger LOG = Logger.getLogger(Test.class);
@@ -22,20 +25,17 @@ public class Test {
         System.out.println("Program rasing-simulation\n");
     }
 
-    private void setName() {
+    private void readName() {
         System.out.println("Please enter your name:");
-        name = scan.nextLine();
+        do {
+            name = scan.nextLine();
+        } while (!(checkRegExp(name)));
     }
 
-    private String trimLine() {
+    private void trimLine() {
         if (name == null) {
-            System.out.println("Null");
+            throw new NullPointerException("Name is null");
         }
-        while (name.trim().equals("")) {
-            System.out.println("Empty");
-            setName();
-        }
-        return name;
     }
 
     private void helloName() {
@@ -43,19 +43,24 @@ public class Test {
     }
 
     private void equalsEnter() {
-        while (("\n").equals(scan.nextLine())) {
+        do {
             System.out.print("Press <Enter> to exit...");
-        }
+        } while (("\n").equals(scan.nextLine()));
+    }
+
+    private static boolean checkRegExp(String aName) {
+        Pattern p = Pattern.compile("[A-Za-z\\s]{2,15}");
+        Matcher m = p.matcher(aName);
+        return m.matches();
     }
 
     private void run() {
-        BasicConfigurator.configure();
         LOG.info("Start");
         getInfo();
-        setName();
+        readName();
         trimLine();
         helloName();
         equalsEnter();
-        LOG.info("Finish");
+        LOG.info("End");
     }
 }
