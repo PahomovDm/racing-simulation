@@ -5,7 +5,7 @@ package com.pahomov.greet;
  * @version 1.0
  */
 
-class SimpleGreeter implements Greeter {
+public class SimpleGreeter implements Greeter {
 
     @Override
     public void greetUser(String userName) {
