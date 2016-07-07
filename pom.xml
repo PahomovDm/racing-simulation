@@ -59,7 +59,7 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>com.pahomov.Test</mainClass>
+							<mainClass>com.pahomov.rasingSimulationApp</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

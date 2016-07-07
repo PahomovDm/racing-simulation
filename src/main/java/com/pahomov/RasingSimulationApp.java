@@ -16,12 +16,8 @@ public class RasingSimulationApp {
 
     public static final Logger LOG = Logger.getLogger(RasingSimulationApp.class);
     private Scanner scan = new Scanner(System.in);
-    private String name;
+    private String name = "Колобок";
     private Greeter greeter;
-
-    RasingSimulationApp() {
-        name = scan.nextLine();
-    }
 
     public static void main(String[] args) {
         RasingSimulationApp myTest = new RasingSimulationApp();
@@ -32,18 +28,19 @@ public class RasingSimulationApp {
         System.out.println("Program rasing-simulation\n");
     }
 
-    private void readName() {
+    private String readName() {
         do {
             System.out.println("Please enter your name:");
             name = scan.nextLine();
+            LOG.info(name);
             if (name == null) {
-                throw new NullPointerException("Name is null");
+                throw new NullPointerException();
             }
+//            if (name == null) {
+//                throw new NullPointerException("Name is null");
+//            }
         } while (!(checkName(name)));
-    }
-
-    private void helloName() {
-        System.out.printf("Hello %s! This is Racing Simulator\n", name.trim());
+        return name;
     }
 
     private void equalsEnter() {
@@ -62,8 +59,7 @@ public class RasingSimulationApp {
         LOG.info("Start");
         try {
             getInfo();
-            readName();
-            helloName();
+            greeter.greetUser(readName());
             equalsEnter();
             LOG.info("End");
         } catch (NullPointerException e) {
