@@ -26,7 +26,7 @@ public class Test {
     }
 
     private void readName() {
-          do {
+        do {
             System.out.println("Please enter your name:");
             name = scan.nextLine();
             if (name == null) {
@@ -46,7 +46,7 @@ public class Test {
     }
 
     private static boolean checkName(String aName) {
-        Pattern p = Pattern.compile("\\p{IsAlphabetic}{2,15}");
+        Pattern p = Pattern.compile("[\\p{IsAlphabetic}]{2,15}");
         Matcher m = p.matcher(aName);
         return m.matches();
     }
@@ -61,8 +61,8 @@ public class Test {
             LOG.info("End");
         } catch (NullPointerException e) {
             System.out.println("Null name, close program");
-            System.exit(1);
             LOG.error("NullPointerException");
+            System.exit(1);
         }
     }
 }
