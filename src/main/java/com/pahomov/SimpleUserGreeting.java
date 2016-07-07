@@ -17,19 +17,15 @@ interface SimpleUserGreeting {
     Logger LOG = Logger.getLogger(Test.class);
 
     Scanner SCAN = new Scanner(System.in);
-/** Приветствие программы*/
     default void getInfo() {
         System.out.println("Program rasing-simulation\n");
     }
-/** Выход из программы по нажатию Enter*/
     default void equalsEnter() {
         do {
             System.out.print("Press <Enter> to exit...");
         } while (("\n").equals(SCAN.nextLine()));
     }
-/** Считывает введеную строку и проверяет подходящие символы*/
     default String readName() {
-        /** Переменная имени */
         String aName;
         do {
             System.out.println("Please enter your name:");

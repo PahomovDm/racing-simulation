@@ -1,5 +1,7 @@
 package com.pahomov;
-
+/**
+ * @dpahomov
+ */
 import org.apache.log4j.Logger;
 
 class Greeter implements SimpleUserGreeting {
