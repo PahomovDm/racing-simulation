@@ -29,13 +29,10 @@ public class Test {
         System.out.println("Please enter your name:");
         do {
             name = scan.nextLine();
-        } while (!(checkRegExp(name)));
-    }
-
-    private void inspectionNull() {
-        if (name == null) {
-            throw new NullPointerException("Name is null");
-        }
+            if (name == null) {
+                throw new NullPointerException("Name is null");
+            }
+        } while (!(checkName(name)));
     }
 
     private void helloName() {
@@ -48,24 +45,24 @@ public class Test {
         } while (("\n").equals(scan.nextLine()));
     }
 
-    private static boolean checkRegExp(String aName) {
-        Pattern p = Pattern.compile("[A-Za-z\\s]{2,15}");
+    private static boolean checkName(String aName) {
+        Pattern p = Pattern.compile("[p{IsAlphabetic}\\p{Space}]{2,15}");
         Matcher m = p.matcher(aName);
         return m.matches();
     }
 
     private void run() {
         LOG.info("Start");
-        getInfo();
         try {
+            getInfo();
             readName();
+            helloName();
+            equalsEnter();
+            LOG.info("End");
         } catch (NullPointerException e) {
+            System.out.println("");
             System.exit(1);
             LOG.error("NullPointerException");
-            }
-        inspectionNull();
-        helloName();
-        equalsEnter();
-        LOG.info("End");
+        }
     }
 }
