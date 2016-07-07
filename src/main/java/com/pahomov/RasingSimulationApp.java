@@ -1,5 +1,6 @@
 package com.pahomov;
 
+import com.pahomov.greet.*;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -11,14 +12,19 @@ import org.apache.log4j.Logger;
  *
  */
 
-public class Test1 {
+public class RasingSimulationApp {
 
-    public static final Logger LOG = Logger.getLogger(Test1.class);
+    public static final Logger LOG = Logger.getLogger(RasingSimulationApp.class);
     private Scanner scan = new Scanner(System.in);
     private String name;
+    private Greeter greeter;
+
+    RasingSimulationApp() {
+        name = scan.nextLine();
+    }
 
     public static void main(String[] args) {
-        Test1 myTest = new Test1();
+        RasingSimulationApp myTest = new RasingSimulationApp();
         myTest.run();
     }
 
