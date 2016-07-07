@@ -1,13 +1,16 @@
-package com.pahomov;
+package com.pahomov.greet;
+
 /**
  * @dpahomov
+ * @version 1.0
  */
 import org.apache.log4j.Logger;
 
-class Greeter implements SimpleUserGreeting {
-    /** Переменная логирования*/
+import com.pahomov.Test;
+
+class Greet implements Greeter {
     public static final Logger LOG = Logger.getLogger(Test.class);
-    /** Приветствует пользователя*/
+
     private void helloName(String name) {
         System.out.printf("Hello %s! This is Racing Simulator\n", name.trim());
     }

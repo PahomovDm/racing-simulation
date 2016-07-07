@@ -1,5 +1,7 @@
 package com.pahomov;
 
+import com.pahomov.greet.Greet;
+
 public final class Test {
     private Test() {
 
@@ -7,9 +9,9 @@ public final class Test {
 
     public static void main(String[] args) {
         /*
-        * Запуск программы
-        */
-        new Greeter().run();
+         * Запуск программы
+         */
+        new Greet().run();
     }
 
 }
