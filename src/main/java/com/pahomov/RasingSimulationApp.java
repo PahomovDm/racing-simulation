@@ -1,6 +1,8 @@
 package com.pahomov;
 
 import com.pahomov.greet.*;
+
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,6 +20,7 @@ public class RasingSimulationApp {
     private Scanner scan = new Scanner(System.in);
     private String name;
     private Greeter greeter = new GoodDayGreeter(new SimpleGreeter());
+    private GregorianCalendar birthday;
 
     public static void main(String[] args) {
         RasingSimulationApp myTest = new RasingSimulationApp();
@@ -39,7 +42,7 @@ public class RasingSimulationApp {
         return name;
     }
 
-    private void equalsEnter() { // переименовать
+    private void closeProgram() {
         do {
             System.out.print("\nPress <Enter> to exit...");
         } while (("\n").equals(scan.nextLine()));
@@ -51,20 +54,47 @@ public class RasingSimulationApp {
         return m.matches();
     }
 
+    private GregorianCalendar readBirthDay() {
+        int day, month, year;
+        System.out.println("Enter you birthday: ");
+        day = scan.nextInt();
+        month = scan.nextInt() - 1;
+        year = scan.nextInt();
+        birthday = new GregorianCalendar(year, month, day);
+        return birthday;
+    }
+
+    private boolean checkAge(GregorianCalendar birthday) {
+        GregorianCalendar checkDay = new GregorianCalendar(2016, 6, 8);
+        int years = checkDay.get(GregorianCalendar.YEAR) - birthday.get(GregorianCalendar.YEAR);
+        int cheMonth = checkDay.get(GregorianCalendar.MONTH);
+        int birMonth = birthday.get(GregorianCalendar.MONTH);
+        if (cheMonth < birMonth) {
+            years--;
+        } else if ((cheMonth == birMonth) && checkDay.get(GregorianCalendar.DAY_OF_MONTH) < birthday.get(GregorianCalendar.DAY_OF_MONTH)) {
+            years--;
+        }
+
+      return !(years < 18);
+    }
+
     private void run() {
         LOG.info("Start");
         try {
             getInfo();
             readName();
-            greeter.greetUser(name);
-            equalsEnter();
-            LOG.info("End");
+            if (checkAge(readBirthDay())) {
+                greeter.greetUser(name);
+            } else {
+                System.out.println("Малыш");
+            }
         } catch (NullPointerException e) {
             System.out.println("Null name, close program");
             LOG.error("NullPointerException");
-            System.exit(1);
+        } finally {
+            closeProgram();
+            LOG.info("End");
         }
-        // файнали
     }
 }
 // ввод даты рождения. проверить на 18+, если меньше - нет доступа.
