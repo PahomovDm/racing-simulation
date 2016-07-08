@@ -16,8 +16,8 @@ public class RasingSimulationApp {
 
     public static final Logger LOG = Logger.getLogger(RasingSimulationApp.class);
     private Scanner scan = new Scanner(System.in);
-    private String name = "Колобок";
-    private Greeter greeter;
+    private String name;
+    private Greeter greeter = new SimpleGreeter();
 
     public static void main(String[] args) {
         RasingSimulationApp myTest = new RasingSimulationApp();
