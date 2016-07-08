@@ -17,7 +17,7 @@ public class RasingSimulationApp {
     public static final Logger LOG = Logger.getLogger(RasingSimulationApp.class);
     private Scanner scan = new Scanner(System.in);
     private String name;
-    private Greeter greeter = new SimpleGreeter();
+    private Greeter greeter = new GoodDayGreeter(new SimpleGreeter());
 
     public static void main(String[] args) {
         RasingSimulationApp myTest = new RasingSimulationApp();
@@ -36,16 +36,13 @@ public class RasingSimulationApp {
             if (name == null) {
                 throw new NullPointerException();
             }
-//            if (name == null) {
-//                throw new NullPointerException("Name is null");
-//            }
         } while (!(checkName(name)));
         return name;
     }
 
-    private void equalsEnter() {
+    private void equalsEnter() { //переименовать
         do {
-            System.out.print("Press <Enter> to exit...");
+            System.out.print("\nPress <Enter> to exit...");
         } while (("\n").equals(scan.nextLine()));
     }
 
@@ -67,5 +64,7 @@ public class RasingSimulationApp {
             LOG.error("NullPointerException");
             System.exit(1);
         }
+        //файнали
     }
 }
+// ввод даты рождения. проверить на 18+, если меньше - нет доступа.

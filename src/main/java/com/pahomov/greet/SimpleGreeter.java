@@ -10,7 +10,7 @@ public class SimpleGreeter implements Greeter {
     @Override
     public void greetUser(String userName) {
 
-        System.out.printf("Hello %s! This is Racing Simulator\n", userName);
+        System.out.printf("Hi %s! This is Racing Simulator", userName);
     }
 
 }
