@@ -8,6 +8,7 @@ package com.pahomov.greet;
  *
  */
 public interface Greeter {
+
     default void greetUser(String userName) {
         System.out.println("Hi " + userName);
     }

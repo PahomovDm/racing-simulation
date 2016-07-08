@@ -20,6 +20,7 @@ public class RasingSimulationApp {
     private Scanner scan = new Scanner(System.in);
     private String name;
     private Greeter greeter = new GoodDayGreeter(new SimpleGreeter());
+    private KidGreeter kidGreeter = new KidGreeter();
     private GregorianCalendar birthday;
 
     public static void main(String[] args) {
@@ -44,7 +45,8 @@ public class RasingSimulationApp {
 
     private void closeProgram() {
         do {
-            System.out.print("\nPress <Enter> to exit...");
+            System.out.print("Press <Enter> to exit...");
+            scan.nextLine();
         } while (("\n").equals(scan.nextLine()));
     }
 
@@ -71,11 +73,12 @@ public class RasingSimulationApp {
         int birMonth = birthday.get(GregorianCalendar.MONTH);
         if (cheMonth < birMonth) {
             years--;
-        } else if ((cheMonth == birMonth) && checkDay.get(GregorianCalendar.DAY_OF_MONTH) < birthday.get(GregorianCalendar.DAY_OF_MONTH)) {
+        } else if ((cheMonth == birMonth)
+                && checkDay.get(GregorianCalendar.DAY_OF_MONTH) < birthday.get(GregorianCalendar.DAY_OF_MONTH)) {
             years--;
         }
 
-      return !(years < 18);
+        return !(years < 18);
     }
 
     private void run() {
@@ -86,7 +89,7 @@ public class RasingSimulationApp {
             if (checkAge(readBirthDay())) {
                 greeter.greetUser(name);
             } else {
-                System.out.println("Малыш");
+                kidGreeter.greetUser();
             }
         } catch (NullPointerException e) {
             System.out.println("Null name, close program");
@@ -97,4 +100,3 @@ public class RasingSimulationApp {
         }
     }
 }
-// ввод даты рождения. проверить на 18+, если меньше - нет доступа.
