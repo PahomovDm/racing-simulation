@@ -16,11 +16,12 @@ import org.apache.log4j.Logger;
 
 public class RasingSimulationApp {
 
+    private static final int AGE_FOR_PROGRAMM = 18;
     public static final Logger LOG = Logger.getLogger(RasingSimulationApp.class);
     private Scanner scan = new Scanner(System.in);
     private String name;
     private Greeter greeter = new GoodDayGreeter(new SimpleGreeter());
-    private KidGreeter kidGreeter = new KidGreeter();
+    private Greeter kidGreeter = new GoodDayGreeter(new KidGreeter());
     private GregorianCalendar birthday;
 
     public static void main(String[] args) {
@@ -78,7 +79,7 @@ public class RasingSimulationApp {
             years--;
         }
 
-        return !(years < 18);
+        return !(years < AGE_FOR_PROGRAMM);
     }
 
     private void run() {
@@ -89,7 +90,7 @@ public class RasingSimulationApp {
             if (checkAge(readBirthDay())) {
                 greeter.greetUser(name);
             } else {
-                kidGreeter.greetUser();
+                kidGreeter.greetUser(name);
             }
         } catch (NullPointerException e) {
             System.out.println("Null name, close program");
@@ -100,3 +101,6 @@ public class RasingSimulationApp {
         }
     }
 }
+
+// класс юзер. junit.
+//

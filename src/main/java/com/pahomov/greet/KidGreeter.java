@@ -1,9 +1,9 @@
 package com.pahomov.greet;
 
-public class KidGreeter {
+public class KidGreeter implements Greeter {
 
-    public void greetUser() {
+    public void greetUser(String userName) {
 
-        System.out.println("You are young for this program");
+        System.out.print("You are young for this program");
     }
 }
