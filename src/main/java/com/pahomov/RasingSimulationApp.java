@@ -32,7 +32,6 @@ public class RasingSimulationApp {
         do {
             System.out.println("Please enter your name:");
             name = scan.nextLine();
-            LOG.info(name);
             if (name == null) {
                 throw new NullPointerException();
             }
@@ -40,7 +39,7 @@ public class RasingSimulationApp {
         return name;
     }
 
-    private void equalsEnter() { //переименовать
+    private void equalsEnter() { // переименовать
         do {
             System.out.print("\nPress <Enter> to exit...");
         } while (("\n").equals(scan.nextLine()));
@@ -56,7 +55,8 @@ public class RasingSimulationApp {
         LOG.info("Start");
         try {
             getInfo();
-            greeter.greetUser(readName());
+            readName();
+            greeter.greetUser(name);
             equalsEnter();
             LOG.info("End");
         } catch (NullPointerException e) {
@@ -64,7 +64,7 @@ public class RasingSimulationApp {
             LOG.error("NullPointerException");
             System.exit(1);
         }
-        //файнали
+        // файнали
     }
 }
 // ввод даты рождения. проверить на 18+, если меньше - нет доступа.
