@@ -2,7 +2,7 @@ package com.pahomov;
 
 import static org.junit.Assert.*;
 
-import java.util.GregorianCalendar;
+//import java.util.GregorianCalendar;
 
 import org.apache.log4j.Logger;
 import org.junit.Test;
@@ -18,7 +18,7 @@ public class UserTest {
         user.setName(aName);
         assertEquals(user.getName(), "Dmitry");
     }
-
+    /**
     @Test
     public void testSetAge() {
 
@@ -56,4 +56,5 @@ public class UserTest {
             LOG.error("RuntimeException");
         }
     }
+    */
 }

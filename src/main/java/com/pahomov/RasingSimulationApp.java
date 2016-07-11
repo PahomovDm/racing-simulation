@@ -2,7 +2,8 @@ package com.pahomov;
 
 import com.pahomov.greet.*;
 
-import java.util.GregorianCalendar;
+import java.time.LocalDate;
+//import java.util.GregorianCalendar;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -55,7 +56,7 @@ public class RasingSimulationApp {
         return m.matches();
     }
 
-    public GregorianCalendar readBirthDay() {
+    public LocalDate readBirthDay() {
         int day, month, year;
         System.out.print("Enter you birthday: \nDay ");
         day = scan.nextInt();
@@ -63,7 +64,7 @@ public class RasingSimulationApp {
         month = scan.nextInt() - 1;
         System.out.print("Year ");
         year = scan.nextInt();
-        GregorianCalendar birthday = new GregorianCalendar(year, month, day);
+        LocalDate birthday = LocalDate.of(year, month, day);
         return birthday;
     }
 
@@ -72,7 +73,7 @@ public class RasingSimulationApp {
         try {
             getInfo();
             readName();
-            user.setBirthday(readBirthDay());
+            user.setBirthday2(readBirthDay());
             if (user.getAge() > AGE_FOR_PROGRAMM) {
                 greeter.greetUser(user.getName());
             } else {
