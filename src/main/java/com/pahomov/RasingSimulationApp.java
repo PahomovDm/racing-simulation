@@ -2,7 +2,6 @@ package com.pahomov;
 
 import com.pahomov.greet.*;
 
-import java.util.GregorianCalendar;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -19,10 +18,8 @@ public class RasingSimulationApp {
     private static final int AGE_FOR_PROGRAMM = 18;
     public static final Logger LOG = Logger.getLogger(RasingSimulationApp.class);
     private Scanner scan = new Scanner(System.in);
-    private String name;
     private Greeter greeter = new GoodDayGreeter(new SimpleGreeter());
-    private Greeter kidGreeter = new GoodDayGreeter(new KidGreeter());
-    private GregorianCalendar birthday;
+    private Greeter kidGreeter = new KidGreeter();
 
     public static void main(String[] args) {
         RasingSimulationApp myTest = new RasingSimulationApp();
@@ -33,20 +30,19 @@ public class RasingSimulationApp {
         System.out.println("Program rasing-simulation\n");
     }
 
-    private String readName() {
+    private void readName() {
         do {
             System.out.println("Please enter your name:");
-            name = scan.nextLine();
-            if (name == null) {
+            User.setName(scan.nextLine());
+            if (User.getName() == null) {
                 throw new NullPointerException();
             }
-        } while (!(checkName(name)));
-        return name;
+        } while (!(checkName(User.getName())));
     }
 
     private void closeProgram() {
         do {
-            System.out.print("Press <Enter> to exit...");
+            System.out.print("\nPress <Enter> to exit...");
             scan.nextLine();
         } while (("\n").equals(scan.nextLine()));
     }
@@ -57,29 +53,13 @@ public class RasingSimulationApp {
         return m.matches();
     }
 
-    private GregorianCalendar readBirthDay() {
+    public void readBirthDay() {
         int day, month, year;
         System.out.println("Enter you birthday: ");
         day = scan.nextInt();
         month = scan.nextInt() - 1;
         year = scan.nextInt();
-        birthday = new GregorianCalendar(year, month, day);
-        return birthday;
-    }
-
-    private boolean checkAge(GregorianCalendar birthday) {
-        GregorianCalendar checkDay = new GregorianCalendar(2016, 6, 8);
-        int years = checkDay.get(GregorianCalendar.YEAR) - birthday.get(GregorianCalendar.YEAR);
-        int cheMonth = checkDay.get(GregorianCalendar.MONTH);
-        int birMonth = birthday.get(GregorianCalendar.MONTH);
-        if (cheMonth < birMonth) {
-            years--;
-        } else if ((cheMonth == birMonth)
-                && checkDay.get(GregorianCalendar.DAY_OF_MONTH) < birthday.get(GregorianCalendar.DAY_OF_MONTH)) {
-            years--;
-        }
-
-        return !(years < AGE_FOR_PROGRAMM);
+        User.setbBirthday(day, month, year);
     }
 
     private void run() {
@@ -87,10 +67,11 @@ public class RasingSimulationApp {
         try {
             getInfo();
             readName();
-            if (checkAge(readBirthDay())) {
-                greeter.greetUser(name);
+            readBirthDay();
+            if (User.getAge() > AGE_FOR_PROGRAMM) {
+                greeter.greetUser(User.getName());
             } else {
-                kidGreeter.greetUser(name);
+                kidGreeter.greetUser(User.getName());
             }
         } catch (NullPointerException e) {
             System.out.println("Null name, close program");
@@ -101,6 +82,5 @@ public class RasingSimulationApp {
         }
     }
 }
-
 // класс юзер. junit.
 // если введено неверно др, то показать как правильно и предоставить ввод опять

@@ -1,23 +1,44 @@
 package com.pahomov;
 
 import java.util.GregorianCalendar;
-import java.util.Scanner;
 
-class User {
-    private Scanner scan = new Scanner(System.in);
-    private String name;
-    private GregorianCalendar birthday;
+public class User {
+    private static String name;
+    private static GregorianCalendar birthday;
+    private static int age;
 
-    User() {
-        System.out.println("Введите имя:");
-        name = scan.nextLine();
-        readBirthDay();
+    public static void setName(String aName) {
+        name = aName;
     }
 
-    public void readBirthDay() {
-    };
+    public static String getName() {
+        return name;
+    }
 
     public boolean checkName() {
         return false;
+    }
+
+    public static void setbBirthday(int aDay, int aMonth, int aYear) {
+        birthday = new GregorianCalendar(aYear, aMonth, aDay);
+        setAge();
+    }
+
+    private static void setAge() {
+        GregorianCalendar checkDay = new GregorianCalendar(2016, 6, 8);
+        int year = checkDay.get(GregorianCalendar.YEAR) - birthday.get(GregorianCalendar.YEAR);
+        int cheMonth = checkDay.get(GregorianCalendar.MONTH);
+        int birMonth = birthday.get(GregorianCalendar.MONTH);
+        if (cheMonth < birMonth) {
+            year--;
+        } else if ((cheMonth == birMonth)
+                && checkDay.get(GregorianCalendar.DAY_OF_MONTH) < birthday.get(GregorianCalendar.DAY_OF_MONTH)) {
+            year--;
+        }
+        age = year;
+    }
+
+    public static int getAge() {
+        return age;
     }
 }
