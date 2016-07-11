@@ -1,34 +1,29 @@
 package com.pahomov;
 
+import java.time.*;
+import java.time.temporal.ChronoUnit;
 import java.util.GregorianCalendar;
 
 final class User {
-    private static String name;
-    private static GregorianCalendar birthday;
-    private static int age;
+    private String name;
+    private GregorianCalendar birthday;
+    private int age;
 
-    private User() {
+    public void setName(String aName) {
+        this.name = aName;
     }
 
-    public static void setName(String aName) {
-        name = aName;
+    public String getName() {
+        return this.name;
     }
 
-    public static String getName() {
-        return name;
+    public void setBirthday(GregorianCalendar aBirthday) {
+        birthday = aBirthday;
+        calkAge();
     }
 
-    public static boolean checkName() {
-        return false;
-    }
-
-    public static void setbBirthday(int aDay, int aMonth, int aYear) {
-        birthday = new GregorianCalendar(aYear, aMonth, aDay);
-        setAge();
-    }
-
-    private static void setAge() {
-        GregorianCalendar checkDay = new GregorianCalendar(2016, 6, 8);
+    private void calkAge() {
+        GregorianCalendar checkDay = new GregorianCalendar();
         int year = checkDay.get(GregorianCalendar.YEAR) - birthday.get(GregorianCalendar.YEAR);
         int cheMonth = checkDay.get(GregorianCalendar.MONTH);
         int birMonth = birthday.get(GregorianCalendar.MONTH);
@@ -38,10 +33,22 @@ final class User {
                 && checkDay.get(GregorianCalendar.DAY_OF_MONTH) < birthday.get(GregorianCalendar.DAY_OF_MONTH)) {
             year--;
         }
-        age = year;
+        if (year < 0) {
+            throw new RuntimeException();
+        } else {
+            age = year;
+        }
+
     }
 
-    public static int getAge() {
+    private void calkAge2() {
+        LocalDate birt = LocalDate.of(1994, 3, 20);
+        LocalDate now = LocalDate.now();
+        long yearss = ChronoUnit.YEARS.between(birt, now);
+        System.out.println(yearss);
+    }
+
+    public int getAge() {
         return age;
     }
 }

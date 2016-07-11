@@ -2,15 +2,58 @@ package com.pahomov;
 
 import static org.junit.Assert.*;
 
+import java.util.GregorianCalendar;
+
+import org.apache.log4j.Logger;
 import org.junit.Test;
 
 public class UserTest {
+    private User user = new User();
+    public static final Logger LOG = Logger.getLogger(RasingSimulationApp.class);
+
 
     @Test
-    public void testSetName() {
+    public void testSetAndGetName() {
         String aName = "Dmitry";
-        User.setName(aName);
-        assertEquals(User.getName(), "Dmitry");
+        user.setName(aName);
+        assertEquals(user.getName(), "Dmitry");
     }
 
+    @Test
+    public void testSetAge() {
+
+        int y = 1996;
+        int m = 4;
+        int d = 21;
+        GregorianCalendar bd = new GregorianCalendar(y, m, d);
+        user.setBirthday(bd);
+        assertEquals(user.getAge(), 20);
+    }
+
+    @Test
+    public void testSetAgeWithbdToday() {
+
+        int y = 2016;
+        int m = 06;
+        int d = 11;
+        GregorianCalendar bd = new GregorianCalendar(y, m, d);
+        user.setBirthday(bd);
+        assertEquals(user.getAge(), 0);
+
+    }
+
+    @Test
+    public void testSetAgeWithbdTomorrow() {
+
+        try {
+            int y = 2016;
+            int m = 06;
+            int d = 12;
+            GregorianCalendar bd = new GregorianCalendar(y, m, d);
+            user.setBirthday(bd);
+            assertEquals(user.getAge(), -1);
+        } catch (RuntimeException e) {
+            LOG.error("RuntimeException");
+        }
+    }
 }

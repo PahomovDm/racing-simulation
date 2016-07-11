@@ -2,6 +2,7 @@ package com.pahomov;
 
 import com.pahomov.greet.*;
 
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,6 +21,7 @@ public class RasingSimulationApp {
     private Scanner scan = new Scanner(System.in);
     private Greeter greeter = new GoodDayGreeter(new SimpleGreeter());
     private Greeter kidGreeter = new KidGreeter();
+    private User user = new User();
 
     public static void main(String[] args) {
         RasingSimulationApp myTest = new RasingSimulationApp();
@@ -33,11 +35,11 @@ public class RasingSimulationApp {
     private void readName() {
         do {
             System.out.println("Please enter your name:");
-            User.setName(scan.nextLine());
-            if (User.getName() == null) {
+            user.setName(scan.nextLine());
+            if (user.getName() == null) {
                 throw new NullPointerException();
             }
-        } while (!(checkName(User.getName())));
+        } while (!(checkName(user.getName())));
     }
 
     private void closeProgram() {
@@ -53,12 +55,16 @@ public class RasingSimulationApp {
         return m.matches();
     }
 
-    public void readBirthDay() {
+    public GregorianCalendar readBirthDay() {
         int day, month, year;
-        System.out.println("Enter you birthday: ");
+        System.out.print("Enter you birthday: \nDay ");
         day = scan.nextInt();
+        System.out.print("Month ");
         month = scan.nextInt() - 1;
+        System.out.print("Year ");
         year = scan.nextInt();
+        GregorianCalendar birthday = new GregorianCalendar(year, month, day);
+        return birthday;
     }
 
     private void run() {
@@ -66,20 +72,22 @@ public class RasingSimulationApp {
         try {
             getInfo();
             readName();
-            readBirthDay();
-            if (User.getAge() > AGE_FOR_PROGRAMM) {
-                greeter.greetUser(User.getName());
+            user.setBirthday(readBirthDay());
+            if (user.getAge() > AGE_FOR_PROGRAMM) {
+                greeter.greetUser(user.getName());
             } else {
-                kidGreeter.greetUser(User.getName());
+                kidGreeter.greetUser(user.getName());
             }
         } catch (NullPointerException e) {
             System.out.println("Null name, close program");
             LOG.error("NullPointerException");
+        } catch (RuntimeException e) {
+            System.out.println("You are not yet born");
+            LOG.error("RuntemeExcetion, age < 0");
         } finally {
             closeProgram();
             LOG.info("End");
         }
     }
 }
-// класс юзер. junit.
-// если введено неверно др, то показать как правильно и предоставить ввод опять
+// прочитать шаблоны стратегия, фабрика
