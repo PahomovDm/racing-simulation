@@ -59,7 +59,6 @@ public class RasingSimulationApp {
         day = scan.nextInt();
         month = scan.nextInt() - 1;
         year = scan.nextInt();
-        User.setbBirthday(day, month, year);
     }
 
     private void run() {

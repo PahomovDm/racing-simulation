@@ -2,10 +2,13 @@ package com.pahomov;
 
 import java.util.GregorianCalendar;
 
-public class User {
+final class User {
     private static String name;
     private static GregorianCalendar birthday;
     private static int age;
+
+    private User() {
+    }
 
     public static void setName(String aName) {
         name = aName;
@@ -15,7 +18,7 @@ public class User {
         return name;
     }
 
-    public boolean checkName() {
+    public static boolean checkName() {
         return false;
     }
 
