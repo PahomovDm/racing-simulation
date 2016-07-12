@@ -8,7 +8,7 @@ public final class User {
     private String name;
     private LocalDate birthday;
     private int age;
-    private boolean todayBirthday;
+    private boolean isBirthday;
 
     public void setName(String aName) {
         this.name = aName;
@@ -63,12 +63,12 @@ public final class User {
     private void congratulateBirthDay() {
         LocalDate now = LocalDate.now();
         if (birthday.getDayOfMonth() == now.getDayOfMonth() && birthday.getMonth() == now.getMonth()) {
-            todayBirthday = true;
+            isBirthday = true;
         }
     }
 
-    public boolean getTodayBirthday() {
-        return todayBirthday;
+    public boolean isTodayBirthday() {
+        return isBirthday;
     }
 }
 // несколько пользователей, приветствие по возрасту.

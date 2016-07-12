@@ -7,7 +7,7 @@ public class CreateGreeter {
 
     public Greeter factoryGreeter(User user) {
         if (user.getAge() > AGE_FOR_PROGRAMM) {
-            if (user.getTodayBirthday()) {
+            if (user.isTodayBirthday()) {
                 return new GoodDayGreeter(new HappyBirthday(new SimpleGreeter()));
             }
             return new GoodDayGreeter(new SimpleGreeter());
