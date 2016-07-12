@@ -15,17 +15,16 @@ import org.apache.log4j.Logger;
  *
  */
 
-public class RasingSimulationApp {
+public class RasingSimulationApp2 {
 
-    private static final int AGE_FOR_PROGRAMM = 18;
-    public static final Logger LOG = Logger.getLogger(RasingSimulationApp.class);
+    public static final Logger LOG = Logger.getLogger(RasingSimulationApp2.class);
     private Scanner scan = new Scanner(System.in);
-//    private Greeter greeter = new GoodDayGreeter(new SimpleGreeter());
-    private Greeter kidGreeter = new KidGreeter();
+    private CreateGreeter factory = new CreateGreeter();
+    private Greeter greeter;
     private User user = new User();
 
     public static void main(String[] args) {
-        RasingSimulationApp myTest = new RasingSimulationApp();
+        RasingSimulationApp2 myTest = new RasingSimulationApp2();
         myTest.run();
     }
 
@@ -56,16 +55,16 @@ public class RasingSimulationApp {
         return m.matches();
     }
 
-    public LocalDate readBirthDay() {
+    public void readBirthDay() {
         int day, month, year;
         System.out.print("Enter you birthday: \nDay ");
         day = scan.nextInt();
         System.out.print("Month ");
-        month = scan.nextInt() - 1;
+        month = scan.nextInt();
         System.out.print("Year ");
         year = scan.nextInt();
         LocalDate birthday = LocalDate.of(year, month, day);
-        return birthday;
+        user.setBirthday2(birthday);
     }
 
     private void run() {
@@ -73,17 +72,15 @@ public class RasingSimulationApp {
         try {
             getInfo();
             readName();
-            user.setBirthday2(readBirthDay());
-//            if (user.getAge() > AGE_FOR_PROGRAMM) {
-//                greeter.greetUser(user.getName());
-//            } else {
-//                kidGreeter.greetUser(user.getName());
-//            }
+            readBirthDay();
+            LOG.info(user.getAge());
+            greeter = factory.factoryGreeter(user);
+            greeter.greetUser(user.getName());
         } catch (NullPointerException e) {
             System.out.println("Null name, close program");
             LOG.error("NullPointerException");
         } catch (RuntimeException e) {
-            System.out.println("You are not yet born");
+            System.out.println("You are not born");
             LOG.error("RuntemeExcetion, age < 0");
         } finally {
             closeProgram();
