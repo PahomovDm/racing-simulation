@@ -37,19 +37,27 @@ public class RasingSimulationApp2 {
         } while (("\n").equals(scan.nextLine()));
     }
 
+    private void addUser() {
+        do {
+            user.add(new User2.Builder().name().birthday().build());
+            System.out.print("\nClick <0> to add or <1> to continue ");
+        } while (scan.nextInt() == 0);
+    }
+
+    private void getUsers() {
+        for (User2 user : user) {
+            greeter = factory.factoryGreeter(user);
+            greeter.greetUser(user.getName());
+        }
+    }
+
     private void run() {
         LOG.info("Start");
         try {
             getInfo();
-            do {
-                user.add(new User2.Builder().name().birthday().build());
-                System.out.print("\nClick <0> to add or <1> to continue ");
-            } while (scan.nextInt() == 0);
+            addUser();
             Collections.sort(user);
-            for (User2 user : user) {
-                greeter = factory.factoryGreeter(user);
-                greeter.greetUser(user.getName());
-            }
+            getUsers();
         } catch (NullPointerException e) {
             System.out.println("Null name, close program");
             LOG.error("NullPointerException");
@@ -67,4 +75,3 @@ public class RasingSimulationApp2 {
 // приветствие в функциональном стиле.
 // вывод приветствия через поток
 // интерфейс с методами риднэйм и ридбёздэй
-// источник данных
