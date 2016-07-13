@@ -3,8 +3,7 @@ package com.pahomov;
 import com.pahomov.greet.*;
 
 import java.util.ArrayList;
-//import java.util.Arrays;
-import java.util.Collections;
+//import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import org.apache.log4j.Logger;
@@ -20,7 +19,7 @@ public class RasingSimulationApp2 {
     private Scanner scan = new Scanner(System.in);
     private CreateGreeter factory = new CreateGreeter();
     private Greeter greeter;
-    private List<User2> user = new ArrayList<User2>();
+    private List<User2> users = new ArrayList<User2>();
 
     public static void main(String[] args) {
         RasingSimulationApp2 myTest = new RasingSimulationApp2();
@@ -39,16 +38,13 @@ public class RasingSimulationApp2 {
 
     private void addUser() {
         do {
-            user.add(new User2.Builder().name().birthday().build());
-            System.out.print("\nClick <0> to add or <1> to continue ");
+            users.add(new User2.Builder().name().birthday().build());
+            System.out.print("\nClick <0> to add");
         } while (scan.nextInt() == 0);
     }
 
     private void getUsers() {
-        for (User2 user : user) {
-            greeter = factory.factoryGreeter(user);
-            greeter.greetUser(user.getName());
-        }
+        users.stream().forEachOrdered(u -> factory.factoryGreeter(u).greetUser(u));
     }
 
     private void run() {
@@ -56,7 +52,6 @@ public class RasingSimulationApp2 {
         try {
             getInfo();
             addUser();
-            Collections.sort(user);
             getUsers();
         } catch (NullPointerException e) {
             System.out.println("Null name, close program");

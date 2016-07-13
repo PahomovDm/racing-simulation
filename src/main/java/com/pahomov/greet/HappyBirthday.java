@@ -1,5 +1,7 @@
 package com.pahomov.greet;
 
+import com.pahomov.User2;
+
 public class HappyBirthday implements Greeter {
     Greeter greeter;
 
@@ -7,8 +9,8 @@ public class HappyBirthday implements Greeter {
         this.greeter = greeter;
     }
 
-    public void greetUser(String userName) {
-        greeter.greetUser(userName);
+    public void greetUser(User2 user) {
+        greeter.greetUser(null);
         System.out.print(" Happy Birthday to you!");
     }
 }

@@ -59,17 +59,8 @@ public class User2 implements Comparable<User2> {
         age = getAge();
     }
 
-    public void setName(String aName) {
-        this.name = aName;
-    }
-
     public String getName() {
         return this.name;
-    }
-
-    public void setBirthday2(LocalDate aBirthday) {
-        birthday = aBirthday;
-        congratulateBirthDay();
     }
 
     public int getAge() {
