@@ -1,13 +1,7 @@
 package com.pahomov;
 
 import com.pahomov.greet.*;
-
-import java.time.LocalDate;
-//import java.util.GregorianCalendar;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import org.apache.log4j.Logger;
 
 /**
@@ -21,7 +15,7 @@ public class RasingSimulationApp2 {
     private Scanner scan = new Scanner(System.in);
     private CreateGreeter factory = new CreateGreeter();
     private Greeter greeter;
-    private User user = new User();
+    private User2 user;
 
     public static void main(String[] args) {
         RasingSimulationApp2 myTest = new RasingSimulationApp2();
@@ -32,16 +26,6 @@ public class RasingSimulationApp2 {
         System.out.println("Program rasing-simulation\n");
     }
 
-    private void readName() {
-        do {
-            System.out.println("Please enter your name:");
-            user.setName(scan.nextLine());
-            if (user.getName() == null) {
-                throw new NullPointerException();
-            }
-        } while (!(checkName(user.getName())));
-    }
-
     private void closeProgram() {
         do {
             System.out.print("\nPress <Enter> to exit...");
@@ -49,30 +33,11 @@ public class RasingSimulationApp2 {
         } while (("\n").equals(scan.nextLine()));
     }
 
-    private static boolean checkName(String aName) {
-        Pattern p = Pattern.compile("[\\p{IsAlphabetic}]{2,15}");
-        Matcher m = p.matcher(aName);
-        return m.matches();
-    }
-
-    public void readBirthDay() {
-        int day, month, year;
-        System.out.print("Enter you birthday: \nDay ");
-        day = scan.nextInt();
-        System.out.print("Month ");
-        month = scan.nextInt();
-        System.out.print("Year ");
-        year = scan.nextInt();
-        LocalDate birthday = LocalDate.of(year, month, day);
-        user.setBirthday2(birthday);
-    }
-
     private void run() {
         LOG.info("Start");
         try {
             getInfo();
-            readName();
-            readBirthDay();
+            user = new User2.Builder().name().birthday().build();
             LOG.info(user.getAge());
             greeter = factory.factoryGreeter(user);
             greeter.greetUser(user.getName());
@@ -92,3 +57,5 @@ public class RasingSimulationApp2 {
 // несколько пользователей, приветствие по возрасту.
 // приветствие в функциональном стиле.
 // вывод приветствия через поток
+// интерфейс с методами риднэйм и ридбёздэй
+// источник данных

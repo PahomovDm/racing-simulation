@@ -3,7 +3,7 @@ package com.pahomov;
 import java.time.*;
 import java.time.temporal.ChronoUnit;
 
-public final class User {
+public final class User implements Comparable {
     private String name;
     private LocalDate birthday;
     private int age;
@@ -42,5 +42,11 @@ public final class User {
 
     public boolean isTodayBirthday() {
         return isBirthday;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        // TODO Auto-generated method stub
+        return 0;
     }
 }

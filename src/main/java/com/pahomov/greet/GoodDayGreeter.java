@@ -15,6 +15,6 @@ public class GoodDayGreeter implements Greeter {
 
     public void greetUser(String userName) {
         greeter.greetUser(userName);
-        System.out.println(". Have a nice day!");
+        System.out.println(" Have a nice day!");
     }
 }
