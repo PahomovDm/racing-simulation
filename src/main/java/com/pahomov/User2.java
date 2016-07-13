@@ -6,7 +6,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public final class User2 {
+public class User2 implements Comparable<User2> {
     private String name;
     private LocalDate birthday;
     private int age;
@@ -15,8 +15,6 @@ public final class User2 {
     public static class Builder {
         private String name;
         private LocalDate birthday;
-        private int age;
-        private boolean isBirthday;
         private Scanner scan = new Scanner(System.in);
 
         public Builder name() {
@@ -58,9 +56,7 @@ public final class User2 {
     User2(Builder builder) {
         name = builder.name;
         birthday = builder.birthday;
-        age = builder.age;
-        isBirthday = builder.isBirthday;
-
+        age = getAge();
     }
 
     public void setName(String aName) {
@@ -97,6 +93,17 @@ public final class User2 {
     public boolean isTodayBirthday() {
         congratulateBirthDay();
         return isBirthday;
+    }
+
+    @Override
+    public int compareTo(User2 o) {
+        if (this.age < o.age) {
+            return 1;
+        }
+        if (this.age > o.age) {
+            return -1;
+        }
+        return 0;
     }
 
 }
