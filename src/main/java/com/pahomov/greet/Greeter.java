@@ -3,7 +3,7 @@
  */
 package com.pahomov.greet;
 
-import com.pahomov.BuildUser.User;
+import com.pahomov.UserBuilder.User;
 
 /**
  * @author dpahomov

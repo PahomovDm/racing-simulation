@@ -1,8 +1,9 @@
 package com.pahomov;
 
-import com.pahomov.BuildUser.*;
+import com.pahomov.UserBuilder.*;
 import com.pahomov.greet.*;
 
+import java.time.DateTimeException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -39,7 +40,15 @@ public class RasingSimulationApp {
 
     private void inputUsers() {
         do {
-            users.add(new ConsoleUserBuilder().name().birthday().build());
+            try {
+                users.add(new ConsoleUserBuilder().name().birthday().build());
+            } catch (AgeException ex) {
+                System.out.println(ex.getMessage());
+            } catch (DateTimeException ex) {
+                System.out.println(ex.getMessage());
+            } catch (NullNameException ex) {
+                System.out.println(ex.getMessage());
+            }
             System.out.print("\nClick <0> to add");
         } while (scan.nextInt() == 0);
     }
@@ -55,14 +64,9 @@ public class RasingSimulationApp {
             getInfo();
             inputUsers();
             outputUsers();
-        } catch (NullPointerException e) {
-            System.out.println("Null name, close program");
-        } catch (RuntimeException ex) {
-            System.out.println(ex.getMessage());
         } finally {
             closeProgram();
             LOG.info("End");
         }
     }
 }
-

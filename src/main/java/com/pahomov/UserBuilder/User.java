@@ -1,4 +1,4 @@
-package com.pahomov.BuildUser;
+package com.pahomov.UserBuilder;
 
 import java.time.*;
 import java.time.temporal.ChronoUnit;
@@ -9,12 +9,15 @@ public class User implements Comparable<User> {
     private int age;
     private boolean isBirthday;
 
-    public User(String aName, LocalDate aBirthday) throws AgeException {
+    public User(String aName, LocalDate aBirthday) throws AgeException, NullNameException {
         name = aName;
         birthday = aBirthday;
         calcAge();
         if (age < 0) {
-            throw new AgeException("Возраст не может быть меньше 0", age);
+            throw new AgeException("Age should not be less 0", age);
+        }
+        if (name == null) {
+            throw new NullNameException("Name should not be empty");
         }
     }
 

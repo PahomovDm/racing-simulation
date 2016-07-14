@@ -1,7 +1,9 @@
-package com.pahomov.BuildUser;
+package com.pahomov.UserBuilder;
 
 public class AgeException extends Exception {
-    private int age;
+    /**
+     * @author dpahomov
+     */
 
     public AgeException(String message, int age) {
         super(message);

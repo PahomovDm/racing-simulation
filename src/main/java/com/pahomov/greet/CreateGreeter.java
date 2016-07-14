@@ -1,7 +1,6 @@
 package com.pahomov.greet;
 
-//import com.pahomov.User;
-import com.pahomov.BuildUser.User;
+import com.pahomov.UserBuilder.User;
 
 public class CreateGreeter {
     private static final int AGE_FOR_PROGRAMM = 18;

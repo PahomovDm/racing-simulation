@@ -9,7 +9,7 @@
 //import org.apache.log4j.Logger;
 //import org.junit.Test;
 //
-//import com.pahomov.BuildUser.User;
+//import com.pahomov.UserBuilder.User;
 //
 //public class UserTest {
 //    private User user = new User();

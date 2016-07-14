@@ -1,4 +1,4 @@
-package com.pahomov.BuildUser;
+package com.pahomov.UserBuilder;
 
 import java.time.LocalDate;
 import java.util.regex.Matcher;
@@ -19,7 +19,7 @@ public abstract class AbstractUserBuilder implements UserBuilder {
         return m.matches();
     }
 
-    public User build() {
-       return new User(name, birthday);
+    public User build() throws AgeException, NullNameException {
+        return new User(name, birthday);
     }
 }

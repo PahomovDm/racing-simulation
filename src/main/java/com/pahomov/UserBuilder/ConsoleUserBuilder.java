@@ -1,4 +1,4 @@
-package com.pahomov.BuildUser;
+package com.pahomov.UserBuilder;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -12,9 +12,6 @@ public class ConsoleUserBuilder extends AbstractUserBuilder {
         do {
             System.out.println("Please enter your name:");
             name = (scan.nextLine());
-            if (name == null) {
-                throw new NullPointerException();
-            }
         } while (!(checkName(name)));
         return this;
     }
