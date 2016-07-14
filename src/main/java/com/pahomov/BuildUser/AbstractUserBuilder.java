@@ -4,14 +4,14 @@ import java.time.LocalDate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class AbstractUserBuilder implements UserBuilders {
+public abstract class AbstractUserBuilder implements UserBuilder {
 
     protected String name;
     protected LocalDate birthday;
 
-    public abstract AbstractUserBuilder name();
+    public abstract UserBuilder name();
 
-    public abstract AbstractUserBuilder birthday();
+    public abstract UserBuilder birthday();
 
     protected boolean checkName(String aName) {
         Pattern p = Pattern.compile("[\\p{IsAlphabetic}]{2,15}");
@@ -19,4 +19,7 @@ public abstract class AbstractUserBuilder implements UserBuilders {
         return m.matches();
     }
 
+    public User build() {
+       return new User(name, birthday);
+    }
 }

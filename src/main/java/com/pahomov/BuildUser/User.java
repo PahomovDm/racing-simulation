@@ -9,12 +9,16 @@ public class User implements Comparable<User> {
     private int age;
     private boolean isBirthday;
 
-    public User(ConsoleUserBuilder consoleUserBuilder) {
-        name = consoleUserBuilder.name;
-        birthday = consoleUserBuilder.birthday;
+    public User(String aName, LocalDate aBirthday) throws AgeException {
+        name = aName;
+        birthday = aBirthday;
         calcAge();
+        if (age < 0) {
+            throw new AgeException("Возраст не может быть меньше 0", age);
+        }
     }
 
+    //
     public String getName() {
         return this.name;
     }
@@ -22,11 +26,6 @@ public class User implements Comparable<User> {
     private void calcAge() {
         LocalDate now = LocalDate.now();
         age = (int) ChronoUnit.YEARS.between(birthday, now);
-        if ((int) ChronoUnit.YEARS.between(birthday, now) < 0) {
-            throw new RuntimeException();
-        } else {
-            age = (int) ChronoUnit.YEARS.between(birthday, now);
-        }
     }
 
     public int getAge() {

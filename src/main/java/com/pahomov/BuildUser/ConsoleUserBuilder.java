@@ -32,9 +32,4 @@ public class ConsoleUserBuilder extends AbstractUserBuilder {
         return this;
     }
 
-    public User build() {
-        return new User(this);
-
-    }
-
 }
