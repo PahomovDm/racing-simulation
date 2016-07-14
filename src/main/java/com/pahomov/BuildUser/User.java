@@ -1,28 +1,25 @@
-package com.pahomov;
+package com.pahomov.BuildUser;
 
 import java.time.*;
 import java.time.temporal.ChronoUnit;
 
-public final class User implements Comparable {
+public class User implements Comparable<User> {
     private String name;
     private LocalDate birthday;
     private int age;
     private boolean isBirthday;
 
-    public void setName(String aName) {
-        this.name = aName;
+    public User(ConsoleUserBuilder consoleUserBuilder) {
+        name = consoleUserBuilder.name;
+        birthday = consoleUserBuilder.birthday;
+        calcAge();
     }
 
     public String getName() {
         return this.name;
     }
 
-    public void setBirthday2(LocalDate aBirthday) {
-        birthday = aBirthday;
-        congratulateBirthDay();
-    }
-
-    public int getAge() {
+    private void calcAge() {
         LocalDate now = LocalDate.now();
         age = (int) ChronoUnit.YEARS.between(birthday, now);
         if ((int) ChronoUnit.YEARS.between(birthday, now) < 0) {
@@ -30,6 +27,9 @@ public final class User implements Comparable {
         } else {
             age = (int) ChronoUnit.YEARS.between(birthday, now);
         }
+    }
+
+    public int getAge() {
         return age;
     }
 
@@ -41,12 +41,19 @@ public final class User implements Comparable {
     }
 
     public boolean isTodayBirthday() {
+        congratulateBirthDay();
         return isBirthday;
     }
 
-    @Override
-    public int compareTo(Object o) {
-        // TODO Auto-generated method stub
+    public int compareTo(User o) {
+        if (this.age < o.age) {
+            return 1;
+        }
+        if (this.age > o.age) {
+            return -1;
+        }
         return 0;
     }
+
 }
+// jdbc

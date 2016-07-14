@@ -1,6 +1,6 @@
 package com.pahomov.greet;
 
-import com.pahomov.User2;
+import com.pahomov.BuildUser.User;
 
 /**
  * @dpahomov
@@ -10,7 +10,7 @@ import com.pahomov.User2;
 public class SimpleGreeter implements Greeter {
 
     @Override
-    public void greetUser(User2 user) {
+    public void greetUser(User user) {
         System.out.printf("Hi %s! This is Racing Simulator.", user.getName());
     }
 

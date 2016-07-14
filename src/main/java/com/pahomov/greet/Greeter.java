@@ -3,7 +3,7 @@
  */
 package com.pahomov.greet;
 
-import com.pahomov.User2;
+import com.pahomov.BuildUser.User;
 
 /**
  * @author dpahomov
@@ -11,7 +11,7 @@ import com.pahomov.User2;
  */
 public interface Greeter {
 
-    default void greetUser(User2 user) {
-        System.out.println("Hi " + user.getName());
+    default void greetUser(User u) {
+        System.out.println("Hi " + u.getName());
     }
 }

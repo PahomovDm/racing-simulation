@@ -3,7 +3,7 @@ package com.pahomov.greet;
 import org.apache.log4j.Logger;
 
 import com.pahomov.RasingSimulationApp2;
-import com.pahomov.User2;
+import com.pahomov.BuildUser.User;
 
 public class GoodDayGreeter implements Greeter {
 
@@ -14,8 +14,8 @@ public class GoodDayGreeter implements Greeter {
         this.greeter = greeter;
     }
 
-    public void greetUser(User2 user) {
-        greeter.greetUser(user);
+    public void greetUser(User u) {
+        greeter.greetUser(u);
         System.out.println(" Have a nice day!");
     }
 }

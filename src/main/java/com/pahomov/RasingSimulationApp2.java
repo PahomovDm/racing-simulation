@@ -1,9 +1,10 @@
 package com.pahomov;
 
+import com.pahomov.BuildUser.*;
 import com.pahomov.greet.*;
 
 import java.util.ArrayList;
-//import java.util.Collections;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import org.apache.log4j.Logger;
@@ -18,8 +19,8 @@ public class RasingSimulationApp2 {
     public static final Logger LOG = Logger.getLogger(RasingSimulationApp2.class);
     private Scanner scan = new Scanner(System.in);
     private CreateGreeter factory = new CreateGreeter();
-    private Greeter greeter;
-    private List<User2> users = new ArrayList<User2>();
+    // private Greeter greeter;
+    private List<User> users = new ArrayList<User>();
 
     public static void main(String[] args) {
         RasingSimulationApp2 myTest = new RasingSimulationApp2();
@@ -36,14 +37,15 @@ public class RasingSimulationApp2 {
         } while (("\n").equals(scan.nextLine()));
     }
 
-    private void addUser() {
+    private void inputUsers() {
         do {
-            users.add(new User2.Builder().name().birthday().build());
+            users.add(new User(new ConsoleUserBuilder().name().birthday()));
             System.out.print("\nClick <0> to add");
         } while (scan.nextInt() == 0);
     }
 
-    private void getUsers() {
+    private void outputUsers() {
+        Collections.sort(users);
         users.stream().forEachOrdered(u -> factory.factoryGreeter(u).greetUser(u));
     }
 
@@ -51,8 +53,8 @@ public class RasingSimulationApp2 {
         LOG.info("Start");
         try {
             getInfo();
-            addUser();
-            getUsers();
+            inputUsers();
+            outputUsers();
         } catch (NullPointerException e) {
             System.out.println("Null name, close program");
             LOG.error("NullPointerException");
@@ -65,8 +67,4 @@ public class RasingSimulationApp2 {
         }
     }
 }
-// шаблон строитель
-// несколько пользователей, приветствие по возрасту.
-// приветствие в функциональном стиле.
-// вывод приветствия через поток
-// интерфейс с методами риднэйм и ридбёздэй
+
