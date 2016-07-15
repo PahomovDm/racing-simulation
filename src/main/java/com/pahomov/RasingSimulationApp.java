@@ -11,6 +11,10 @@ public final class RasingSimulationApp {
     }
 
     private void run() {
-
+        inputMachine();
     }
+
+    private void inputMachine() {
+    };
+
 }
