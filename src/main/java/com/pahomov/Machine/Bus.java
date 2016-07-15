@@ -3,19 +3,19 @@ package com.pahomov.Machine;
 public class Bus extends AbstractMachine {
 
     @Override
-    public Machine calkSpeed() {
+    public InterfaceMachine calkSpeed() {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public Machine calkDistance() {
+    public InterfaceMachine calkDistance() {
         // TODO Auto-generated method stub
         return null;
     }
 
     @Override
-    public Machine loseSpeed() {
+    public InterfaceMachine loseSpeed() {
         // TODO Auto-generated method stub
         return null;
     }

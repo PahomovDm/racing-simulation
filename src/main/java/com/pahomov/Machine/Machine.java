@@ -1,9 +1,7 @@
 package com.pahomov.Machine;
 
-interface Machine {
-    Machine calkSpeed();
+public class Machine {
+    public void inputMachine() {
 
-    Machine calkDistance();
-
-    Machine loseSpeed();
+    };
 }

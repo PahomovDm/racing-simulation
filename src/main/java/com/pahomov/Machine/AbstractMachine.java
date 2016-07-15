@@ -1,18 +1,18 @@
 package com.pahomov.Machine;
 
-public abstract class AbstractMachine implements Machine {
+public abstract class AbstractMachine implements InterfaceMachine {
     protected String name;
     protected int massa;
     protected int maxSpeed;
     protected double acceleration;
 
     @Override
-    public abstract Machine calkSpeed();
+    public abstract InterfaceMachine calkSpeed();
 
     @Override
-    public abstract Machine calkDistance();
+    public abstract InterfaceMachine calkDistance();
 
     @Override
-    public abstract Machine loseSpeed();
+    public abstract InterfaceMachine loseSpeed();
 
 }
