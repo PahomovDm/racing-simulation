@@ -13,7 +13,7 @@
 //
 //public class UserTest {
 //    private User user = new User();
-//    public static final Logger LOG = Logger.getLogger(RasingSimulationApp.class);
+//    public static final Logger LOG = Logger.getLogger(GreeterApp.class);
 //    LocalDate aBitrhDay;
 //
 //    @Test
