@@ -1,10 +1,10 @@
-package com.pahomov.UserBuilder;
+package com.pahomov.userBuilder;
 
 import java.time.LocalDate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.pahomov.Exception.*;
+import com.pahomov.exception.*;
 
 public abstract class AbstractUserBuilder implements UserBuilder {
 

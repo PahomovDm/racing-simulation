@@ -1,9 +1,9 @@
-package com.pahomov.UserBuilder;
+package com.pahomov.userBuilder;
 
 import java.time.*;
 import java.time.temporal.ChronoUnit;
 
-import com.pahomov.Exception.*;
+import com.pahomov.exception.*;
 
 public class User implements Comparable<User> {
     private String name;

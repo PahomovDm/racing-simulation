@@ -1,4 +1,4 @@
-package com.pahomov.UserBuilder;
+package com.pahomov.userBuilder;
 
 public interface UserBuilder {
 

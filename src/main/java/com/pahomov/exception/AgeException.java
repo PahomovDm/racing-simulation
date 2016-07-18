@@ -1,4 +1,4 @@
-package com.pahomov.Exception;
+package com.pahomov.exception;
 
 public class AgeException extends Exception {
     /**

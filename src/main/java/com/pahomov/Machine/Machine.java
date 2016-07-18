@@ -1,7 +1,7 @@
 package com.pahomov.Machine;
 
 public class Machine {
-    public void inputMachine() {
-
+    public Machine inputMachine() {
+        return null;
     };
 }
