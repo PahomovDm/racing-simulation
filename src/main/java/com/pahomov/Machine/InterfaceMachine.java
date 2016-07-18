@@ -1,9 +1,13 @@
 package com.pahomov.Machine;
 
 public interface InterfaceMachine {
-    InterfaceMachine calkSpeed();
+    void calkSpeed();
 
-    InterfaceMachine calkDistance();
+    void calkDistance();
 
-    InterfaceMachine loseSpeed();
+    void loseSpeed();
+
+    void calkSpeed(int time);
+
+    void calkDistance(int time);
 }

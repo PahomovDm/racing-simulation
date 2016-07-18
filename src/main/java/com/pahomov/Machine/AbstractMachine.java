@@ -1,28 +1,36 @@
 package com.pahomov.Machine;
 
-import java.util.Scanner;
-
 public abstract class AbstractMachine implements InterfaceMachine {
     protected String name;
     protected int massa;
     protected int maxSpeed;
     protected double acceleration;
-    Scanner scan = new Scanner(System.in);
+    protected int speed;
+    protected double distance;
+    protected int allMassa;
 
     public AbstractMachine() {
-        System.out.println("Введите массу, максимальную скорость и ускорение ");
-        massa = scan.nextInt();
-        maxSpeed = scan.nextInt();
-        acceleration = scan.nextInt();
     }
 
     @Override
-    public abstract InterfaceMachine calkSpeed();
+    public void calkSpeed(int time) {
+        speed += acceleration * time;
+    };
 
     @Override
-    public abstract InterfaceMachine calkDistance();
+    public void calkDistance(int time) {
+        distance -= acceleration * time * time / 2;
+
+    };
 
     @Override
-    public abstract InterfaceMachine loseSpeed();
+    public abstract void loseSpeed();
 
+    public void setAcceleration() {
+        acceleration = acceleration * (massa / allMassa);
+    }
+
+    public double getDistance() {
+        return distance;
+    }
 }

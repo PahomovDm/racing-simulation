@@ -3,31 +3,35 @@ package com.pahomov.Machine;
 public class Car extends AbstractMachine {
 
     public Car(Trailer trailer) {
-        new Car();
-        massa += trailer.getMassa();
+        super();
+        allMassa += massa + trailer.getMassa() + trailer.getMassaCargo();
         maxSpeed = Math.min(maxSpeed, trailer.getMaxSpeed());
+        setAcceleration();
     }
 
     public Car() {
         super();
     }
 
-    @Override
-    public InterfaceMachine calkSpeed() {
-        // TODO Auto-generated method stub
-        return null;
+    public Car(int aMassa, int aAcceleration, int aDistance) {
+        massa = aMassa;
+        acceleration = aAcceleration;
+        distance = aDistance;
     }
 
     @Override
-    public InterfaceMachine calkDistance() {
-        // TODO Auto-generated method stub
-        return null;
+    public void calkSpeed() {
+
     }
 
     @Override
-    public InterfaceMachine loseSpeed() {
+    public void calkDistance() {
         // TODO Auto-generated method stub
-        return null;
+    }
+
+    @Override
+    public void loseSpeed() {
+        // TODO Auto-generated method stub
     }
 
 }

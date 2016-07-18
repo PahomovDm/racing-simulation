@@ -9,8 +9,10 @@ public class RasingSimulationApp {
     ArrayList<AbstractMachine> autoList = new ArrayList<AbstractMachine>();
     CreateMachine auto = new CreateMachine();
     Scanner scan = new Scanner(System.in);
+    Car car = new Car(300, 90, 100);
+    int time = 0;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         RasingSimulationApp myTest = new RasingSimulationApp();
         myTest.run();
     }
@@ -26,8 +28,22 @@ public class RasingSimulationApp {
         }
     }
 
-    private void run() {
-        getInfo();
-        inputMachine();
+    private void run() throws InterruptedException {
+//        getInfo();
+//        inputMachine();
+        runSimulation();
+        System.out.println("Прошло секунд " + time);
     }
+
+    private void runSimulation() throws InterruptedException {
+        while (true) {
+            Thread.sleep(1000);
+            time++;
+            car.calkSpeed(time);
+            car.calkDistance(time);
+            if (car.getDistance() < 0) {
+                break;
+            }
+        }
+    };
 }

@@ -1,9 +1,13 @@
 package com.pahomov.Machine;
 
+import java.util.Scanner;
+
 public class Trailer {
     private String name;
     private int massa;
+    private int massaCargo;
     private int maxSpeed;
+    Scanner scan = new Scanner(System.in);
 
     public Trailer() {
 
@@ -12,7 +16,9 @@ public class Trailer {
     public int getMassa() {
         return massa;
     }
-
+    public int getMassaCargo() {
+        return massaCargo;
+    }
     public int getMaxSpeed() {
         return maxSpeed;
     }

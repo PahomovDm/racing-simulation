@@ -5,25 +5,21 @@ public class Bus extends AbstractMachine {
 
     public Bus() {
         super();
-        people = scan.nextInt();
     }
 
     @Override
-    public InterfaceMachine calkSpeed() {
-        // TODO Auto-generated method stub
-        return null;
+    public void calkSpeed() {
+
     }
 
     @Override
-    public InterfaceMachine calkDistance() {
+    public void calkDistance() {
         // TODO Auto-generated method stub
-        return null;
     }
 
     @Override
-    public InterfaceMachine loseSpeed() {
+    public void loseSpeed() {
         // TODO Auto-generated method stub
-        return null;
     }
 
 }
