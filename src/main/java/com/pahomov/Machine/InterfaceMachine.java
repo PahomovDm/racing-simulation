@@ -1,6 +1,6 @@
 package com.pahomov.Machine;
 
-interface InterfaceMachine {
+public interface InterfaceMachine {
     InterfaceMachine calkSpeed();
 
     InterfaceMachine calkDistance();
