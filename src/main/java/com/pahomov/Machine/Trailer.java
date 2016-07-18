@@ -5,6 +5,10 @@ public class Trailer {
     private int massa;
     private int maxSpeed;
 
+    public Trailer() {
+
+    }
+
     public int getMassa() {
         return massa;
     }

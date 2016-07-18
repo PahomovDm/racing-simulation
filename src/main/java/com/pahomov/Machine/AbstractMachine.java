@@ -6,6 +6,10 @@ public abstract class AbstractMachine implements InterfaceMachine {
     protected int maxSpeed;
     protected double acceleration;
 
+    public AbstractMachine() {
+
+    }
+
     @Override
     public abstract InterfaceMachine calkSpeed();
 
