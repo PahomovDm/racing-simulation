@@ -1,6 +1,12 @@
 package com.pahomov.Machine;
 
 public class Bus extends AbstractMachine {
+    private int people;
+
+    public Bus() {
+        super();
+        people = scan.nextInt();
+    }
 
     @Override
     public InterfaceMachine calkSpeed() {

@@ -20,7 +20,7 @@ public class RasingSimulationApp {
     }
 
     private void inputMachine() {
-        System.out.println("Quantity CreateMachine? ");
+        System.out.println("How many machine? ");
         for (int quantity = scan.nextInt(); quantity != 0; quantity--) {
             autoList.add(auto.inputMachine());
         }

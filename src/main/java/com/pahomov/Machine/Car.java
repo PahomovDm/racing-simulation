@@ -9,7 +9,7 @@ public class Car extends AbstractMachine {
     }
 
     public Car() {
-
+        super();
     }
 
     @Override
