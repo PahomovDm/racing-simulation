@@ -1,4 +1,4 @@
-package com.pahomov.Machine.machineBuilder;
+package com.pahomov.machine.machineBuilder;
 
 public abstract class AbstractTruckBuilder {
     public abstract TruckBuilder maxSpeed();

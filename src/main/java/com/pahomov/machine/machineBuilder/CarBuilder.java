@@ -1,4 +1,4 @@
-package com.pahomov.Machine.machineBuilder;
+package com.pahomov.machine.machineBuilder;
 
 public interface CarBuilder {
     CarBuilder maxSpeeds();

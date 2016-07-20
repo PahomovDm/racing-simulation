@@ -1,4 +1,4 @@
-package com.pahomov.Machine;
+package com.pahomov.machine;
 
 public abstract class AbstractMachine implements InterfaceMachine {
     protected String name;
@@ -8,17 +8,17 @@ public abstract class AbstractMachine implements InterfaceMachine {
     protected int speed;
     protected double distance;
     protected int allMassa;
-
+// базы данных машин!, трасс, гонок, история для каждой машины
     public AbstractMachine() {
     }
 
     @Override
-    public void calkSpeed(int time) {
+    public void calkSpeed(double time) {
         speed += acceleration * time;
     };
 
     @Override
-    public void calkDistance(int time) {
+    public void calkDistance(double time) {
         distance -= acceleration * time * time / 2;
 
     };

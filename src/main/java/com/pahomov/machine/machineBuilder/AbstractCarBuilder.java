@@ -1,4 +1,4 @@
-package com.pahomov.Machine.machineBuilder;
+package com.pahomov.machine.machineBuilder;
 
 public abstract class AbstractCarBuilder implements CarBuilder {
     protected int maxSpeed;

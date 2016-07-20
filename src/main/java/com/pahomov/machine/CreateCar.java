@@ -1,4 +1,4 @@
-package com.pahomov.Machine;
+package com.pahomov.machine;
 
 public class CreateCar {
     Car car;

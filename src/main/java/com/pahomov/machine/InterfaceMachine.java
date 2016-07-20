@@ -1,4 +1,4 @@
-package com.pahomov.Machine;
+package com.pahomov.machine;
 
 public interface InterfaceMachine {
     void calkSpeed();
@@ -10,4 +10,8 @@ public interface InterfaceMachine {
     void calkSpeed(int time);
 
     void calkDistance(int time);
+
+    void calkDistance(double time);
+
+    void calkSpeed(double time);
 }

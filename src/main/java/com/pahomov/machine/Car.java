@@ -1,4 +1,4 @@
-package com.pahomov.Machine;
+package com.pahomov.machine;
 
 public class Car extends AbstractMachine {
 
@@ -21,17 +21,32 @@ public class Car extends AbstractMachine {
 
     @Override
     public void calkSpeed() {
+        // TODO Auto-generated method stub
 
     }
 
     @Override
     public void calkDistance() {
         // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void calkSpeed(int time) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void calkDistance(int time) {
+        // TODO Auto-generated method stub
+
     }
 
     @Override
     public void loseSpeed() {
         // TODO Auto-generated method stub
+
     }
 
 }

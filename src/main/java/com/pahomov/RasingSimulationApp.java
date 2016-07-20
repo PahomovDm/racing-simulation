@@ -7,10 +7,10 @@ import com.pahomov.Machine.*;
 
 public class RasingSimulationApp {
     ArrayList<AbstractMachine> autoList = new ArrayList<AbstractMachine>();
-    CreateMachine auto = new CreateMachine();
+//    CreateMachine auto = new CreateMachine();
     Scanner scan = new Scanner(System.in);
-    Car car = new Car(300, 90, 100);
-    int time = 0;
+    Car car = new Car(300, 20, 1000);
+    double time = 0;
 
     public static void main(String[] args) throws InterruptedException {
         RasingSimulationApp myTest = new RasingSimulationApp();
@@ -21,12 +21,12 @@ public class RasingSimulationApp {
         System.out.println("Racing Simulation");
     }
 
-    private void inputMachine() {
-        System.out.println("How many machine? ");
-        for (int quantity = scan.nextInt(); quantity != 0; quantity--) {
-            autoList.add(auto.inputMachine());
-        }
-    }
+//    private void inputMachine() {
+//        System.out.println("How many machine? ");
+//        for (int quantity = scan.nextInt(); quantity != 0; quantity--) {
+//            autoList.add(auto.inputMachine());
+//        }
+//    }
 
     private void run() throws InterruptedException {
 //        getInfo();
@@ -38,8 +38,8 @@ public class RasingSimulationApp {
     private void runSimulation() throws InterruptedException {
         while (true) {
             Thread.sleep(1000);
-            time++;
-            car.calkSpeed(time);
+            time += 1;
+//            car.calkSpeed(time);
             car.calkDistance(time);
             if (car.getDistance() < 0) {
                 break;
