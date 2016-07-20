@@ -3,7 +3,8 @@ package com.pahomov;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.pahomov.Machine.*;
+import com.pahomov.machine.*;
+
 
 public class RasingSimulationApp {
     ArrayList<AbstractMachine> autoList = new ArrayList<AbstractMachine>();
