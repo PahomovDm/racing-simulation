@@ -11,10 +11,11 @@ public class Track extends ConnectDatabase {
 
     public void selectTrack() { // вывод информации
         query = ("select id, name, distance from track");
-        runQueryTo(query);
+        runQuery1(query);
     }
 
     public void insertTrack() {
+        // scan.nextLine();
         System.out.println("Введите название трассы:");
         name = scan.nextLine();
         System.out.println("Введите длину трассы:");
@@ -43,8 +44,8 @@ public class Track extends ConnectDatabase {
         scan.nextLine();
         System.out.print("Введите обновленное название трассы ");
         String aName = scan.nextLine();
-        query = ("UPDATE racingsimulation.track SET name = '" + aName + "', distance = '" + aDistance + "' WHERE id in ("
-                + id + ");");
+        query = ("UPDATE racingsimulation.track SET name = '" + aName + "', distance = '" + aDistance
+                + "' WHERE id in (" + id + ");");
         runQuery(query);
         System.out.println("Трасса обновлена!");
     }
@@ -54,7 +55,7 @@ public class Track extends ConnectDatabase {
             id = rs.getInt(1);
             name = rs.getString(2);
             distance = rs.getInt(3);
-            System.out.printf("id: %d, name: %s, distance: %d \n", id, name, distance);
+            System.out.printf("Id трассы: %d, название: %s, дистанция: %d \n", id, name, distance);
         }
 
     }

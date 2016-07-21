@@ -41,7 +41,7 @@ public abstract class ConnectDatabase {
         }
     }
 
-    protected void runQueryTo(String query) {
+    protected void runQuery1(String query) {
         try {
             con = DriverManager.getConnection(URL, USER, PASSWORD);
 

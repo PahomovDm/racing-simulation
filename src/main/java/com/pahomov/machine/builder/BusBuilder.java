@@ -1,4 +1,4 @@
-package com.pahomov.machine.machineBuilder;
+package com.pahomov.machine.builder;
 
 public interface BusBuilder {
     BusBuilder maxSpeed();

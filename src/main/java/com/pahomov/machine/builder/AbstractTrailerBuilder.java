@@ -1,4 +1,4 @@
-package com.pahomov.machine.machineBuilder;
+package com.pahomov.machine.builder;
 
 public abstract class AbstractTrailerBuilder implements TrailerBuilder {
     protected int maxSpeed;
