@@ -10,13 +10,12 @@ import org.apache.log4j.Logger;
 
 import java.io.Serializable;
 
-import com.pahomov.Test;
 import com.pahomov.dao.AbstractJdbcDao;
 import com.pahomov.dao.PersistException;
 import com.pahomov.machine.AbstractMachine;
 
 public class MySqlMachineDao extends AbstractJdbcDao<AbstractMachine, Integer> implements Serializable {
-    public static final Logger LOG = Logger.getLogger(Test.class);
+    public static final Logger LOG = Logger.getLogger(MySqlMachineDao.class);
 
     private class PersistAbstractMachine extends AbstractMachine {
 
