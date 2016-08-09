@@ -1,34 +1,30 @@
 package com.pahomov.machine;
 
-import java.util.Scanner;
+public class Trailer extends AbstractMachine {
 
-public class Trailer {
-    private String name;
-    private int massa;
-    private int massaCargo;
-    private int maxSpeed;
-    Scanner scan = new Scanner(System.in);
+    private int capacity;
+    private String type = "Trailer";
+    final int acceleration = 0;
 
     public Trailer() {
 
     }
 
-    public int getMassa() {
-        return massa;
-    }
-    public int getMassaCargo() {
-        return massaCargo;
-    }
-    public int getMaxSpeed() {
-        return maxSpeed;
+    public Trailer(String aName, int aMassa, double aMaxSpeed, int aCapacity) {
+        name = aName;
+        massa = aMassa;
+        maxSpeed = aMaxSpeed;
+        capacity = aCapacity;
     }
 
-    public void setMassa(int massa) {
-        this.massa = massa;
+    public Trailer(String aName, int aMassa, double aMaxSpeed) {
+        name = aName;
+        massa = aMassa;
+        maxSpeed = aMaxSpeed;
     }
 
-    public void setMaxSpeed(int maxSpeed) {
-        this.maxSpeed = maxSpeed;
+    public String getType() {
+        return type;
     }
 
 }
