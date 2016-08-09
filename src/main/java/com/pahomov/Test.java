@@ -32,7 +32,7 @@ public class Test {
 
     private void run() {
         LOG.info("Start app");
-        ts.startThread();
+//        ts.startThread();
         LOG.info("Start thread");
         selectAction();
         ts.stopThread();
@@ -86,6 +86,9 @@ public class Test {
                     LOG.info(e.getMessage());
                 }
 
+            }
+            if (i == 7) {
+                simulation();
             }
         } while (i != 0);
     }
@@ -173,17 +176,17 @@ public class Test {
     }
 
     private AbstractMachine selectMachine() {
-        dao = connectDB.connect();
         getAllMachine();
         System.out.println("Введите id машины");
         int aId = scan.nextInt();
         AbstractMachine machine = null;
         try {
+            dao = connectDB.connect();
             machine = (AbstractMachine) dao.read(aId);
+            connectDB.close();
         } catch (PersistException e) {
             LOG.info(e.getMessage());
         }
-        connectDB.close();
         return machine;
     }
 
@@ -198,7 +201,7 @@ public class Test {
             }
             t++;
             machine.calcX(t);
-            System.out.println("Расстояние " + machine.getX() + " скорость");
+            System.out.println("Расстояние " + machine.getX() + " скорость " + machine.getSpeed());
         }
     }
 }

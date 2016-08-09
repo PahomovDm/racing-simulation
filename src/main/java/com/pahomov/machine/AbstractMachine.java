@@ -16,9 +16,9 @@ public abstract class AbstractMachine implements Identified<Integer>, Serializab
     protected double maxSpeed;
     protected int allMassa;
     protected double acceleration;
+    protected double speed = 0;
+    protected double x;
 
-    protected double speed;
-    protected  double x;
     protected AbstractMachine(String aName, int aMassa, double aMaxSpeed, double aAcceleration) {
         name = aName;
         massa = aMassa;
