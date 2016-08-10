@@ -90,13 +90,8 @@ public abstract class AbstractMachine implements Identified<Integer>, Serializab
     }
 
     public String toString() {
-        return getId() + " " + getType() + " " + getName() + " " + getMassa() + "кг " + getMaxSpeed() + "км/ч "
-                + getAcceleration() + "км/ч^2\n";
-    }
-
-    public void calcX(int t) {
-        x = acceleration * t * t / 2;
-        speed = acceleration * t * t;
+        return getId() + " " + getType() + " " + getName() + " " + getMassa() + "кг, " + getMaxSpeed() + " км/ч, "
+                + getAcceleration() + " м/c^2;\n";
     }
 
 }

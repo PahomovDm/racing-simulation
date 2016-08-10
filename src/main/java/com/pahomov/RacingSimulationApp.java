@@ -108,6 +108,7 @@ public class RacingSimulationApp {
         AbstractMachine machine = selectMachine();
         dao = connectDB.connect();
         System.out.println("Редактируется " + dao.read(machine.getId()).toString());
+        scan.nextLine();
         System.out.println("Новое имя");
         machine.setName(scan.nextLine());
         System.out.println("Новая масса");
@@ -191,16 +192,20 @@ public class RacingSimulationApp {
 
     private void simulation() {
         AbstractMachine machine = selectMachine();
-        int t = 0;
-        while (true) {
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                LOG.info("Error Sleep");
-            }
-            t++;
-            machine.calcX(t);
-            System.out.println("Расстояние " + machine.getX() + " скорость " + machine.getSpeed());
-        }
+        MotionSimulation motionMachine = new MotionSimulation(machine);
+        motionMachine.calculateDistance();
+        motionMachine.printToConsole();
+        // int t = 0;
+        // while (true) {
+        // try {
+        // Thread.sleep(1000);
+        // } catch (InterruptedException e) {
+        // LOG.info("Error Sleep");
+        // }
+        // t++;
+        // motionMachine.calculateDistance(t);
+        // System.out.println("Расстояние " + motionMachine.getDistance() + "
+        // скорость " + motionMachine.getSpeed());
+        // }
     }
 }
