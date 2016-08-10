@@ -7,7 +7,7 @@ import java.util.Properties;
 import org.apache.log4j.Logger;
 
 public class PropertiesRead {
-    public static final Logger LOG = Logger.getLogger(Test.class);
+    public static final Logger LOG = Logger.getLogger(RacingSimulationApp.class);
     private String folderPath;
     private String fileName;
     private int periodWork;

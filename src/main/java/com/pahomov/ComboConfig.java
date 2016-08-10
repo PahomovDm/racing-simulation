@@ -11,7 +11,7 @@
 //
 //public final class ComboConfig {
 //
-//    public static final Logger LOG = Logger.getLogger(Test.class);
+//    public static final Logger LOG = Logger.getLogger(RacingSimulationApp.class);
 //    private Connection connection = null;
 //    private static int maxPoolSize = 10;
 //    private static int minPoolSize = 5;

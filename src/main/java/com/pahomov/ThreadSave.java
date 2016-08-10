@@ -46,7 +46,7 @@ public class ThreadSave {
                 saveToFile();
                 connectDB.close();
             }
-        }, 0, pf.getPeriodMinutes(), TimeUnit.SECONDS);
+        }, 0, pf.getPeriodMinutes(), TimeUnit.MINUTES);
     }
 
     protected void stopThread() {

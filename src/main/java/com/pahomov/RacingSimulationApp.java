@@ -12,7 +12,7 @@ import com.pahomov.machine.builder.*;
 
 // один поток просчитывает координаты каждую секунду
 // второй выводит каждые пять секунд
-public class Test {
+public class RacingSimulationApp {
     int i;
     private Car car;
     private Bus bus;
@@ -24,16 +24,15 @@ public class Test {
     private Scanner scan = new Scanner(System.in);
     private ThreadSave ts = new ThreadSave();
 
-    public static final Logger LOG = Logger.getLogger(Test.class);
+    public static final Logger LOG = Logger.getLogger(RacingSimulationApp.class);
 
     public static void main(String[] args) {
-        new Test().run();
+        new RacingSimulationApp().run();
     }
 
     private void run() {
         LOG.info("Start app");
-//        ts.startThread();
-        LOG.info("Start thread");
+        ts.startThread();
         selectAction();
         ts.stopThread();
         LOG.info("Finish");
