@@ -4,7 +4,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class MotionSimulation {
+public class Simulation {
     private final int timeOutCalculation = 1000;
     private final int timeOutPrint = 5000;
     private String name;
@@ -13,7 +13,10 @@ public class MotionSimulation {
     private double maxSpeed;
     private double acceleration;
     private double distance;
-    private ScheduledExecutorService service;
+    private ScheduledExecutorService serviceCalc;
+    private ScheduledExecutorService servicePrint;
+    private static int position = 0;
+
     private int time;
 
     public double getSpeed() {
@@ -24,30 +27,36 @@ public class MotionSimulation {
         return distance;
     }
 
-    public MotionSimulation(AbstractMachine machine) {
+    public Simulation(AbstractMachine machine) {
         name = machine.getName();
         massa = machine.getAllMassa(); // кг
         maxSpeed = machine.getMaxSpeed() / 3.6; // м*сек
         acceleration = machine.getAcceleration();
     }
 
-    public void calculateDistance() {
-        service = Executors.newSingleThreadScheduledExecutor();
-        service.scheduleAtFixedRate(new Runnable() {
+    public void calculateDistance(int aDistanceTrack) {
+        serviceCalc = Executors.newSingleThreadScheduledExecutor();
+        serviceCalc.scheduleAtFixedRate(new Runnable() {
 
             @Override
             public void run() {
 
                 if (calculateSpeed() < maxSpeed) {
                     distance = 0.5 * acceleration * time * time;
-
                 } else {
                     distance += speed;
 
                 }
                 time++;
+
+                if (distance > aDistanceTrack) {
+                    serviceCalc.shutdownNow();
+                    servicePrint.shutdownNow();
+                    position++;
+                    printWin();
+                }
             }
-        }, 0, timeOutCalculation, TimeUnit.MILLISECONDS);
+        }, 100, timeOutCalculation, TimeUnit.MILLISECONDS);
     }
 
     private double calculateSpeed() {
@@ -62,13 +71,17 @@ public class MotionSimulation {
     }
 
     public void printToConsole() {
-        service = Executors.newSingleThreadScheduledExecutor();
-        service.scheduleAtFixedRate(new Runnable() {
+        servicePrint = Executors.newSingleThreadScheduledExecutor();
+        servicePrint.scheduleAtFixedRate(new Runnable() {
 
             @Override
             public void run() {
                 System.out.printf("%s Расстояние %.2f скорость %.2f\n", name, distance, speed);
             }
-        }, 0, (long) timeOutPrint, TimeUnit.MILLISECONDS);
+        }, 125, timeOutPrint, TimeUnit.MILLISECONDS);
+    }
+
+    public void printWin() {
+        System.out.printf("%s доехал до финиша за %d секунд и расположился на %d месте\n", name, time, position);
     }
 }

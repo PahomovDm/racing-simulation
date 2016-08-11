@@ -1,6 +1,7 @@
 package com.pahomov;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -23,6 +24,7 @@ public class RacingSimulationApp {
     private ConnectDB connectDB = new ConnectDB();
     private Scanner scan = new Scanner(System.in);
     private ThreadSave ts = new ThreadSave();
+    private ThreadSave ts2 = new ThreadSave();
 
     public static final Logger LOG = Logger.getLogger(RacingSimulationApp.class);
 
@@ -44,7 +46,8 @@ public class RacingSimulationApp {
             System.out.println("Выбирете действие:");
             System.out.println(
                     "1) Добавить машину \n2) Удалить машину \n3) Редактировать данные машины \n4) Посмотреть все машины "
-                            + "\n5) Сохранить объекты в файл \n51 Импортировать \n6) Cохранить машинки в файл \n0) Выйти");
+                            + "\n5) Сохранить объекты в файл \n6) Импортировать объекты из файла \n7) Cохранить машинки в файл \n8) "
+                            + "Cимуляция движения \n0) Выйти");
             i = scan.nextInt();
             if (i == 1) {
                 try {
@@ -75,10 +78,10 @@ public class RacingSimulationApp {
 
                 }
             }
-            if (i == 6) {
+            if (i == 7) {
                 writer.saveMachineToFile(getAllList(), writer.createConsoleFile());
             }
-            if (i == 51) {
+            if (i == 6) {
                 try {
                     writer.inputFile();
                 } catch (ClassNotFoundException | IOException e) {
@@ -86,7 +89,7 @@ public class RacingSimulationApp {
                 }
 
             }
-            if (i == 7) {
+            if (i == 8) {
                 simulation();
             }
         } while (i != 0);
@@ -191,21 +194,22 @@ public class RacingSimulationApp {
     }
 
     private void simulation() {
-        AbstractMachine machine = selectMachine();
-        MotionSimulation motionMachine = new MotionSimulation(machine);
-        motionMachine.calculateDistance();
-        motionMachine.printToConsole();
-        // int t = 0;
-        // while (true) {
-        // try {
-        // Thread.sleep(1000);
-        // } catch (InterruptedException e) {
-        // LOG.info("Error Sleep");
-        // }
-        // t++;
-        // motionMachine.calculateDistance(t);
-        // System.out.println("Расстояние " + motionMachine.getDistance() + "
-        // скорость " + motionMachine.getSpeed());
-        // }
+        List<Simulation> machine = new ArrayList<Simulation>();
+
+        do {
+            machine.add(new Simulation(selectMachine()));
+            System.out.println("Чтоб закончить ввод - 0");
+        } while (scan.nextInt() != 0);
+        System.out.println("Введите длину трассы в метрах");
+        int distanceTrack = scan.nextInt();
+        for (Simulation a : machine) {
+            a.calculateDistance(distanceTrack);
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                LOG.error(e.getMessage());
+            }
+            a.printToConsole();
+        }
     }
 }
