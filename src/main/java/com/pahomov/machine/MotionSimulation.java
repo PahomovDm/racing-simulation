@@ -67,8 +67,7 @@ public class MotionSimulation {
 
             @Override
             public void run() {
-                System.out.println(name + " Расстояние " + distance + " скорость " + speed);
-
+                System.out.printf("%s Расстояние %.2f скорость %.2f\n", name, distance, speed);
             }
         }, 0, (long) timeOutPrint, TimeUnit.MILLISECONDS);
     }
