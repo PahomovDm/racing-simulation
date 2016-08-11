@@ -204,11 +204,12 @@ public class RacingSimulationApp {
         int distanceTrack = scan.nextInt();
         for (Simulation a : machine) {
             a.calculateDistance(distanceTrack);
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException e) {
-                LOG.error(e.getMessage());
-            }
+            // try {
+            // Thread.sleep(10);
+            // } catch (InterruptedException e) {
+            // LOG.error(e.getMessage());
+            // }
+            // синхрозировать
             a.printToConsole();
         }
     }

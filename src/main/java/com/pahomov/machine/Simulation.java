@@ -70,7 +70,7 @@ public class Simulation {
         return speed;
     }
 
-    public void printToConsole() {
+    public void printToConsole() { // переименовать
         servicePrint = Executors.newSingleThreadScheduledExecutor();
         servicePrint.scheduleAtFixedRate(new Runnable() {
 
@@ -84,4 +84,10 @@ public class Simulation {
     public void printWin() {
         System.out.printf("%s доехал до финиша за %d секунд и расположился на %d месте\n", name, time, position);
     }
+
+    // перенести в абстракт машину два потока
+    // для просчета состояния отдельных поток. для вывода отдельный.
+    // синхронизировать их
+    // при достижении конца трассы через паттерн наблюдатель вывести действие.
+
 }
